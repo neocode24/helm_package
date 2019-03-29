@@ -1,0 +1,24 @@
+{{- $releaseName := .Release.Name -}}
+{{- range .Values.services }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "complex02.fullname" $ }}-{{ .name }}
+  labels:
+    app: {{ template "complex02.name" $ }}-{{ .name }}-{{ .tag }}
+    chart: {{ template "complex02.chart" $ }}
+    release: {{ $releaseName }}
+spec:
+  type: {{ .type }}
+  ports:
+    - port: {{ .port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ .name }}-{{ .tag }}
+    chart: {{ template "complex02.chart" $ }}
+    release: {{ $releaseName }}
+---
+
+{{- end }}

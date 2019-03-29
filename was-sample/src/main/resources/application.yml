@@ -1,0 +1,80 @@
+# spring default
+spring:
+  profiles:
+    active: local
+    
+# spring boot redis for session clustering
+  session:
+    store-type: redis
+    redis:
+      flush-mode: on-save
+      namespace: spring:session
+  servlet:
+    session:
+      timeout: 3600
+  
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    
+# spring boot - actuator expose
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus
+        
+
+# service name for next call
+target:
+  db:
+    service:
+      name: db-sample
+  cache:
+    service:
+      name: cache-sample
+  
+---
+
+
+# Profile - local
+spring:
+  profiles: local
+  
+logging:
+  file: spring
+  path: ./
+  
+---
+
+
+# Profile - dev
+spring:
+  profiles: dev
+  
+logging:
+  file: spring
+  path: /var/log  
+      
+---    
+
+
+# Profile - stage
+spring:
+  profiles: stage
+  
+logging:
+  file: spring
+  path: /var/log  
+
+---
+
+
+# Profile - prd
+spring:
+  profiles: prd
+  
+logging:
+  file: spring
+  path: /var/log
+

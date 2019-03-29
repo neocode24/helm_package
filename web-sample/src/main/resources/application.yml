@@ -1,0 +1,65 @@
+# spring default
+spring:
+  profiles:
+    active: local
+
+    
+# spring boot - actuator expose
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus
+        
+
+# service name for next call
+target:
+  was:
+    service:
+      name: was-sample
+
+  
+---
+
+
+# Profile - local
+spring:
+  profiles: local
+  
+logging:
+  file: spring
+  path: ./
+
+---
+
+
+# Profile - dev
+spring:
+  profiles: dev
+  
+logging:
+  file: spring
+  path: /var/log  
+      
+---    
+
+
+# Profile - stage
+spring:
+  profiles: stage
+  
+logging:
+  file: spring
+  path: /var/log  
+
+---
+
+
+# Profile - prd
+spring:
+  profiles: prd
+  
+logging:
+  file: spring
+  path: /var/log
+

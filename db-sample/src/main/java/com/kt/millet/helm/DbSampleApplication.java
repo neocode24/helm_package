@@ -8,6 +8,9 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
+
+@EnableEncryptableProperties
 @SpringBootApplication
 public class DbSampleApplication {
 

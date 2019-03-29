@@ -1,0 +1,40 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: simple05-web
+  labels:
+    app: simple05-web-1.0.0
+    chart: simple05-1.0.0
+    release: simple05
+spec:
+  schedule: "*/1 * * * *"
+  failedJobsHistoryLimit:  3
+  concurrencyPolicy: Allow
+  jobTemplate:
+    metadata:
+      labels:
+        app: web-1.0.0
+        chart: simple05-1.0.0
+        release: simple05
+    spec:
+      template:
+        metadata:
+          labels:
+            app: web-1.0.0
+            chart: simple05-1.0.0
+            release: simple05
+        spec:
+          containers:
+          - name: web
+            image:  "ktis-bastion01.container.ipc.kt.com:5000/millet/batch-sample:1.0.0"
+            imagePullPolicy: Always
+            env:
+              - name: POSTGRES_ENV_DB
+                value: "helm_sample"
+              - name: POSTGRES_ENV_IP
+                value: "simple05-postgresql"
+              - name: POSTGRES_ENV_PORT
+                value: "5432"
+              - name: spring.profiles.active
+                value: "swagger"
+          restartPolicy: Never

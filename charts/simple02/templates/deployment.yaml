@@ -1,0 +1,58 @@
+{{- $releaseName := .Release.Name -}}
+{{- range .Values.deployments }}
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ template "simple02.fullname" $ }}-{{ .name }}
+  labels:
+    app: {{ template "simple02.name" $ }}-{{ .name }}-{{ .image.tag }}
+    chart: {{ template "simple02.chart" $ }}
+    release: {{ $releaseName }}
+spec:
+  replicas: {{ .replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .name }}-{{ .image.tag }}
+      chart: {{ template "simple02.chart" $ }}
+      release: {{ $releaseName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .name }}-{{ .image.tag }}
+        chart: {{ template "simple02.chart" $ }}
+        release: {{ $releaseName }}
+    spec:
+      containers:
+        - name: {{ .name }}
+          image: "{{ .image.repository }}:{{ .image.tag }}"
+          imagePullPolicy: {{ .image.pullPolicy }}
+
+          {{- range $k, $v := .env }}
+            {{- if .enabled }}
+          env:
+              {{- range $i, $j := . }}
+                {{- if ne $i "enabled" }}
+            - name: {{ $i }}
+              value: {{ quote $j | default "" }}
+                {{- end }}
+              {{- end }}
+            {{- end }}
+          {{- end }}
+
+          ports:
+{{ toYaml .ports | indent 12 }}
+          livenessProbe:
+{{ toYaml .livenessProbe | indent 12 }}
+          readinessProbe:
+{{ toYaml .readinessProbe | indent 12 }}
+          resources:
+{{ toYaml .resources | indent 12 }}
+      nodeSelector:
+{{ toYaml .nodeSelector | indent 8 }}
+      affinity:
+{{ toYaml .affinity | indent 8 }}
+      tolerations:
+{{ toYaml .tolerations | indent 8 }}
+---
+
+{{- end }}

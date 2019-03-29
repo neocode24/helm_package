@@ -1,0 +1,125 @@
+# spring default
+spring:
+  profiles:
+    active: local
+    
+          
+#jasypt encryptor
+jasypt:
+  encryptor:
+    bean: jasyptStringEncrptor  
+
+      
+
+# spring boot - actuator expose
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus
+        
+  
+---
+
+
+# Profile - local
+spring:
+  profiles: local
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_ENV_IP}:${POSTGRES_ENV_PORT}/${POSTGRES_ENV_DB}
+    username: ENC(G8oZZi/+nOGKJulpGhIbVbfTOlaJtJMJB+FFKFTbo3LrFwYiB81k9g==)
+    password: ENC(GF/24zWh1wspRU+H455W+eYfxuM2RepOV7xgFJ0VqUWATjg+R8y0gg==)
+  jpa:
+    generate-ddl: true
+  properties:
+    hibernate:
+      jdbc:
+        lob:
+          non_contextual_creation: true
+          
+POSTGRES_ENV_IP: 127.0.0.1
+POSTGRES_ENV_PORT: 5432
+POSTGRES_ENV_DB: helm_sample
+  
+logging:
+  file: spring
+  path: ./
+  
+---
+
+
+# Profile - dev
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_ENV_IP}:${POSTGRES_ENV_PORT}/${POSTGRES_ENV_DB}
+    username: ENC(G8oZZi/+nOGKJulpGhIbVbfTOlaJtJMJB+FFKFTbo3LrFwYiB81k9g==)
+    password: ENC(GF/24zWh1wspRU+H455W+eYfxuM2RepOV7xgFJ0VqUWATjg+R8y0gg==)
+  jpa:
+    generate-ddl: true
+  properties:
+    hibernate:
+      jdbc:
+        lob:
+          non_contextual_creation: true
+          
+POSTGRES_ENV_IP: 127.0.0.1
+POSTGRES_ENV_PORT: 5432
+POSTGRES_ENV_DB: helm_sample
+    
+logging:
+  file: spring
+  path: /var/log  
+      
+---    
+
+
+# Profile - stage
+spring:
+  profiles: stage
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_ENV_IP}:${POSTGRES_ENV_PORT}/${POSTGRES_ENV_DB}
+    username: ENC(G8oZZi/+nOGKJulpGhIbVbfTOlaJtJMJB+FFKFTbo3LrFwYiB81k9g==)
+    password: ENC(GF/24zWh1wspRU+H455W+eYfxuM2RepOV7xgFJ0VqUWATjg+R8y0gg==)
+  jpa:
+    generate-ddl: true
+  properties:
+    hibernate:
+      jdbc:
+        lob:
+          non_contextual_creation: true
+          
+POSTGRES_ENV_IP: 127.0.0.1
+POSTGRES_ENV_PORT: 5432
+POSTGRES_ENV_DB: helm_sample
+    
+logging:
+  file: spring
+  path: /var/log  
+
+---
+
+
+# Profile - prd
+spring:
+  profiles: prd
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_ENV_IP}:${POSTGRES_ENV_PORT}/${POSTGRES_ENV_DB}
+    username: ENC(G8oZZi/+nOGKJulpGhIbVbfTOlaJtJMJB+FFKFTbo3LrFwYiB81k9g==)
+    password: ENC(GF/24zWh1wspRU+H455W+eYfxuM2RepOV7xgFJ0VqUWATjg+R8y0gg==)
+  jpa:
+    generate-ddl: true
+  properties:
+    hibernate:
+      jdbc:
+        lob:
+          non_contextual_creation: true
+          
+POSTGRES_ENV_IP: 127.0.0.1
+POSTGRES_ENV_PORT: 5432
+POSTGRES_ENV_DB: helm_sample
+    
+logging:
+  file: spring
+  path: /var/log
+

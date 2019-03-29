@@ -2,6 +2,7 @@ package com.kt.millet.helm.bean;
 
 import java.io.Serializable;
 
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 

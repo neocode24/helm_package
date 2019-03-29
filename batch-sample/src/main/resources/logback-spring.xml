@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+  	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>
+               %highlight([%d{HH:mm:ss.SSS}][%-24.-24thread][%-46.46logger][%4L][%-1.-1p] %m%n)
+            </pattern>
+        </encoder>
+    </appender> 
+    
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern>
+               [%d{HH:mm:ss.SSS}][%-24.-24thread][%-46.46logger][%4L][%-1.-1p] %m%n
+            </pattern>
+		</encoder>
+		<!-- apllication.yml profile 별 logging.file, logging.path 설정 값 로드 -->
+		<file>${LOG_PATH}/${LOG_FILE}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<!-- 일자별 로그 경로 및 로그파일패턴 설정 -->
+			<fileNamePattern>${LOG_PATH}/${LOG_FILE}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<!-- 로그 파일당 최대 용량설정 50MB 넘어갈 경우 onm-admin.2019-02-11.0, onm-admin.2019-02-11.1  파일생성 -->
+			<maxFileSize>50MB</maxFileSize>
+			<!-- old 폴더 로그 생성날짜기준 최신 90개 유지 -->
+			<maxHistory>90</maxHistory>
+		</rollingPolicy>
+	</appender>    
+ 
+ <!-- 로컬환경 로그설정(spring.profiles.active == local) -->   
+ <springProfile name="local">   
+ 	<logger name="com.kt.millet" level="DEBUG" />
+ 		
+    <root level="INFO">
+    	<appender-ref ref="CONSOLE" />
+	</root>
+ </springProfile>
+ 
+ <!-- 개발 및 운영환경 로그설정(spring.profiles.active != local) -->
+ <springProfile name="!local">   
+	<logger name="org.springframework" level="INFO" />
+	<logger name="org.mybatis.spring" level="INFO" />
+	<logger name="org.apache" level="INFO" />
+	
+	<logger name="java.sql.Connection" level="WARN" />
+	<logger name="java.sql.Statement" level="WARN" />
+	<logger name="java.sql.PreparedStatement" level="WARN" />
+	<logger name="java.sql.ResultSet" level="WARN" />
+
+	<logger name="jdbc.sqltiming" level="INFO" />
+	<logger name="jdbc.audit" level="WARN" />
+	<logger name="jdbc.resultset" level="WARN" />
+	<logger name="jdbc.connection" level="WARN" />
+	<logger name="log4jdbc.debug" level="INFO" />
+	<logger name="jdbc.sqlonly" level="WARN" />
+	<logger name="jdbc.resultsettable" level="INFO" />
+		
+    <root level="INFO">
+    	<appender-ref ref="CONSOLE" />		
+		<appender-ref ref="FILE" />
+	</root>
+ </springProfile>
+	
+</configuration>

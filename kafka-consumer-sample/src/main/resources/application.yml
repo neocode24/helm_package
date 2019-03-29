@@ -1,0 +1,77 @@
+# spring default
+spring:
+  profiles:
+    active: local
+
+    
+# spring boot - actuator expose
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus        
+  
+---
+
+
+# Profile - local
+spring:
+  profiles: local
+  kafka:
+    bootstrap-servers: complex01-kafka:9092
+    session:
+      timeout: 60000
+    topic: millet
+  
+logging:
+  file: spring
+  path: ./
+
+---
+
+
+# Profile - dev
+spring:
+  profiles: dev
+  kafka:
+    bootstrap-servers: complex01-kafka:9092
+    session:
+      timeout: 60000
+    topic: millet
+  
+logging:
+  file: spring
+  path: /var/log  
+      
+---    
+
+
+# Profile - stage
+spring:
+  profiles: stage
+  kafka:
+    bootstrap-servers: complex01-kafka:9092
+    session:
+      timeout: 60000
+    topic: millet
+  
+logging:
+  file: spring
+  path: /var/log  
+
+---
+
+
+# Profile - prd
+spring:
+  profiles: prd
+  kafka:
+    bootstrap-servers: complex01-kafka:9092
+    session:
+      timeout: 60000
+    topic: millet
+  
+logging:
+  file: spring
+  path: /var/log
+

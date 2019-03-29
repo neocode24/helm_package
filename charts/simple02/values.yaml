@@ -1,0 +1,270 @@
+# Default values for simple02
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+##=(Summary)================================================================================###
+##
+## Helm Chart - [Simple02 Package : web-was-db]
+##   - version: 1.0.0
+##   - createDate: 2019.03.27
+##   - modifiedDate: 2019.03.27
+##   - description:
+##     - (2019.03.27 1.0.0) : 최초 작성
+##
+##=========================================================================================###
+
+##=(Description)===========================================================================###
+##
+## label 생성 규칙
+## label에는 기본 pod 단위의 버전을 포함한 정보와 package(chart) 정보, release 정보를 기록하여
+## release 별 버전업 관리형식이 가능토록 생성 함.
+##
+## deployment 항목 (releaseName == packageName, name이 "simple02-web" 일 경우)
+##   labels:
+##     app: simple02-web-1.0.0                    --> {packageName}-{podName}-{imageTag}
+##     chart: simple02-0.1.0                      --> {packageName}-{packageVersion}
+##     release: simple02                          --> {releaseName}
+##
+## deployment 항목 (releaseName != packageName, name이 "abc-simple02-was" 일 경우)
+##   labels:
+##     app: simple02-web-1.0.0                    --> {packageName}-{podName}-{imageTag}
+##     chart: simple02-0.1.0                      --> {packageName}-{packageVersion}
+##     release: abc                               --> {releaseName}
+##
+##
+## service 항목 (releaseName == packageName, name이 "simple02-web" 일 경우)
+##   labels:
+##     app: simple02-web-1.0.0                    --> {packageName}-{serviceName}-{serviceTag}
+##     chart: simple02-0.1.0                      --> {packageName}-{packageVersion}
+##     release: simple02                          --> {releaseName}
+##
+## service 항목 (releaseName != packageName, name이 "abc-simple02-web" 일 경우)
+##   labels:
+##     app: simple02-web-1.0.0                    --> {packageName}-{serviceName}-{serviceTag}
+##     chart: simple02-0.1.0                      --> {packageName}-{packageVersion}
+##     release: abc                               --> {releaseName}
+##
+##=========================================================================================###
+
+
+##=(Service Values 작성영역)===============================================================###
+## services values 작성영역
+## 구성단위(web, was)의 pod 집합체에 대한 Groupping 설정.
+## 작성한 services 명칭은, 실제적용시점에는 {releaseName}-{packageName}-{작성명칭}로 구성됨.
+##
+## name: 작성명칭
+## tag: 배포 이미지 버전과 동일
+## port: 기본 포트는 80. Pod에서 8080으로 지정되어있는 경우, Service에서 80으로 구성함.
+## ----------                 -----------------------------------                ---------- ##
+## ----------                 -----------------------------------                ---------- ##
+services:
+  - name: web
+    tag: 1.0.0
+    type: ClusterIP
+    port: 80 
+  - name: was
+    tag: 1.0.0
+    type: ClusterIP
+    port: 80
+  - name: db 
+    tag: 1.0.0
+    type: ClusterIP
+    port: 80
+##=========================================================================================###
+
+
+
+
+##=(Deployments Values 작성영역)===========================================================###
+## deployments values 작성영역
+## 구성단위(web, was)의 pod 집합체에 대한 설정.
+## 작성한 depoyments 명칭은, 실제적용시점에는 {releaseName}-[packageName}-{작성명칭}로 구성됨.
+##
+## image.repository: 배포에 적용할 이미지
+## image.tag: 배포에 적용할 이미지 tag
+## 
+## name: 작성명칭(실제 사용할 web 명칭으로 작성. default: web 예) web, webApplication 등
+## ports: container 동작 port. springboot 일 경우 server.port 설정 사항과 동일.
+## replicaCount: pod 의 운용 개수
+## env: 환경별 container 전달 parameter 설정. 
+##      dev, stage, production 각 enabled 값의 설정에 따라 하위 내용을 구성함.
+##      주의사항) pod 간 호출은 k8s service 를 통해 호출하며, 해당 정보는 springboot 코드에서 target.oo.service.name
+##                형태에 지정한 k8s service 명칭으로 호출됨.
+##                k8s service 명칭은 services values 작성에 따라 {releaseName}-{packageName}-{작성명칭}으로 생성됨.
+##                따라서, releaseName을 "abc"로 명칭한 경우 target.was.service.name 은
+##                target.was.service.name: "abc-simple02-was" 로 기술해야 함.
+##
+##      DB 정보)
+##      POSTGRES_ENV_IP: simple02-postgresql    --> VM DB일 경우 : release 명칭이 동일한 경우 {packageName}-{subChartName(postgresql)}
+##                                                                 relase 명칭이 있는 경우    {releaseName}-{subChartName(postgresql)}
+##                                                     External DB일 경우 : DB External IP or DB Expose ServiceName
+##      POSTGRES_ENV_PORT: 5432                    --> DB Port
+##      POSTGRES_ENV_DB: helm_sample               --> DB InstanceName
+##
+## livenessProbe: Pod의 정상동작 상태를 확인하기 위함. springboot 일 경우 actuator/health 정보로 기술.
+## readinessProbe: Pod의 준비 상태를 확인하기 위함. springboot 일 경우 actuator/health 정보로 기술.
+## resource: 자원사용량 meta
+## nodeSelector: 
+## tolerations:
+## affinity:
+## ----------                 -----------------------------------                ---------- ##
+## ----------                 -----------------------------------                ---------- ##
+deployments:
+  - image:
+      repository: ktis-bastion01.container.ipc.kt.com:5000/millet/web-sample
+      tag: 1.0.0
+      pullPolicy: Always
+    name: web
+    ports:
+      - name: http
+        containerPort: 8080
+        protocol: TCP
+    replicaCount: 1
+    env:
+      dev:
+        enabled: true
+        spring.profiles.active: dev
+        target.was.service.name: "simple02-was"
+      stage:
+        enabled: false
+        spring.profiles.active: stage
+        target.was.service.name: "simple02-was"
+      production:
+        enabled: false
+        spring.profiles.active: prd
+        target.was.service.name: "simple02-was"
+    livenessProbe:
+      httpGet:
+        path: /actuator/health
+        port: http
+    readinessProbe:
+      httpGet:
+        path: /actuator/health
+        port: http
+    resources: {}
+#      limits:
+#        cpu: 100m
+#        memory: 128Mi
+#      requests:
+#        cpu: 100m
+#        memory: 128Mi
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
+  - image:
+      repository: ktis-bastion01.container.ipc.kt.com:5000/millet/was-sample
+      tag: 1.0.0
+      pullPolicy: Always
+    name: was
+    ports:
+      - name: http
+        containerPort: 8080
+        protocol: TCP
+    replicaCount: 1
+    env:
+      dev:
+        enabled: true
+        spring.profiles.active: dev
+        target.db.service.name: "simple02-db"
+        target.cache.service.name: ""
+        spring.redis.host: simple02-redis-master
+      stage:
+        enabled: false
+        spring.profiles.active: stage
+        target.db.service.name: "simple02-db"
+        target.cache.service.name: ""
+        spring.redis.host: simple02-redis-master
+      production:
+        enabled: false
+        spring.profiles.active: prd
+        target.db.service.name: "simple02-db"
+        target.cache.service.name: ""
+        spring.redis.host: simple02-redis-master
+    livenessProbe:
+      httpGet:
+        path: /actuator/health
+        port: http
+    readinessProbe:
+      httpGet:
+        path: /actuator/health
+        port: http
+    resources: {}
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
+  - image:
+      repository: ktis-bastion01.container.ipc.kt.com:5000/millet/db-sample
+      tag: 1.0.0
+      pullPolicy: Always
+    name: db
+    ports:
+      - name: http
+        containerPort: 8080
+        protocol: TCP
+    replicaCount: 1
+    env:
+      dev:
+        enabled: true
+        spring.profiles.active: dev
+        target.cache.service.name: ""
+        POSTGRES_ENV_IP: simple02-postgresql
+        POSTGRES_ENV_PORT: 5432
+        POSTGRES_ENV_DB: helm_sample
+      stage:
+        enabled: false
+        spring.profiles.active: stage
+        target.cache.service.name: ""
+        POSTGRES_ENV_IP: simple02-postgresql
+        POSTGRES_ENV_PORT: 5432
+        POSTGRES_ENV_DB: helm_sample
+      production:
+        enabled: false
+        spring.profiles.active: prd
+        target.cache.service.name: ""
+        POSTGRES_ENV_IP: simple02-postgresql
+        POSTGRES_ENV_PORT: 5432
+        POSTGRES_ENV_DB: helm_sample
+    livenessProbe:
+      httpGet:
+        path: /actuator/health
+        port: http
+    readinessProbe:
+      httpGet:
+        path: /actuator/health
+        port: http
+    resources: {}
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
+##=========================================================================================###
+    
+
+
+##=(ingress values 작성영역)===============================================================###
+## ingress values 작성영역
+## 구성단위(web)의 외부 expose에 대한 설정.
+## web 서버만 외부 접근되는 형태로 구성됨.
+##
+## enabled: 설정적용 유무 
+## path: content-root path
+## serviceName: 외부접근으로 내부로 연계할 service 명칭. service 구성에서 명시한 web service 기술.
+##              default: web 예) web, web-application
+## hosts: 외부 제공 도메인 명칭.(발급된 DNS 인증서가 존재하면, 해당 명칭)
+##        예) abc.container.ipc.kt.com
+## ----------                 -----------------------------------                ---------- ##
+## ----------                 -----------------------------------                ---------- ##
+ingress:
+  enabled: true
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  path: /
+  serviceName: simple02-web
+  hosts:
+    - simple02-package.container.ipc.kt.com
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+##=========================================================================================###
+

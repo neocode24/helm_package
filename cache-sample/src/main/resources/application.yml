@@ -1,0 +1,61 @@
+# spring default
+spring:
+  profiles:
+    active: local
+
+# spring boot for redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    
+# spring boot - actuator expose
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus
+  
+---
+
+
+# Profile - local
+spring:
+  profiles: local
+  
+logging:
+  file: spring
+  path: ./
+  
+---
+
+
+# Profile - dev
+spring:
+  profiles: dev
+  
+logging:
+  file: spring
+  path: /var/log  
+      
+---    
+
+
+# Profile - stage
+spring:
+  profiles: stage
+  
+logging:
+  file: spring
+  path: /var/log  
+
+---
+
+
+# Profile - prd
+spring:
+  profiles: prd
+  
+logging:
+  file: spring
+  path: /var/log
+
