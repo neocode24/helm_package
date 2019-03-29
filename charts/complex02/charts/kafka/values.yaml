@@ -6,8 +6,7 @@
 replicas: 1
 
 ## The kafka image repository
-#image: "confluentinc/cp-kafka"
-image: "ktis-bastion01.container.ipc.kt.com:5000/confluentinc/cp-kafka"
+image: "confluentinc/cp-kafka"
 
 ## The kafka image tag
 imageTag: "5.0.1"  # Confluent image for Kafka 2.0.0

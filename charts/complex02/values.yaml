@@ -128,7 +128,7 @@ services:
 ## ----------                 -----------------------------------                ---------- ##
 deployments:
   - image:
-      repository: ktis-bastion01.container.ipc.kt.com:5000/millet/web-sample
+      repository: neocode24/web-sample
       tag: 1.0.0
       pullPolicy: Always
     name: web
@@ -169,7 +169,7 @@ deployments:
     tolerations: []
     affinity: {}
   - image:
-      repository: ktis-bastion01.container.ipc.kt.com:5000/millet/was-sample
+      repository: neocode24/was-sample
       tag: 1.0.0
       pullPolicy: Always
     name: was
@@ -210,7 +210,7 @@ deployments:
     tolerations: []
     affinity: {}
   - image:
-      repository: ktis-bastion01.container.ipc.kt.com:5000/millet/db-sample
+      repository: neocode24/db-sample
       tag: 1.0.0
       pullPolicy: Always
     name: db
@@ -254,7 +254,7 @@ deployments:
     tolerations: []
     affinity: {}
   - image:
-      repository: ktis-bastion01.container.ipc.kt.com:5000/millet/cache-sample
+      repository: neocode24/cache-sample
       tag: 1.0.0
       pullPolicy: Always
     name: cache
@@ -292,7 +292,7 @@ deployments:
     tolerations: []
     affinity: {}
   - image:
-      repository: ktis-bastion01.container.ipc.kt.com:5000/millet/kafka-producer-sample
+      repository: neocode24/kafka-producer-sample
       tag: 1.0.0
       pullPolicy: Always
     name: producer
@@ -333,7 +333,7 @@ deployments:
     tolerations: []
     affinity: {}
   - image:
-      repository: ktis-bastion01.container.ipc.kt.com:5000/millet/kafka-consumer-sample
+      repository: neocode24/kafka-consumer-sample
       tag: 1.0.0
       pullPolicy: Always
     name: consumer

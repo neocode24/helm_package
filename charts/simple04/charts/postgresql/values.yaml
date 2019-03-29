@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: ktis-bastion01.container.ipc.kt.com:5000/admin/postgres
+  repository: postgres
   tag: 10.6
   pullPolicy: Always
 

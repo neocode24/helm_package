@@ -26,7 +26,7 @@ spec:
         spec:
           containers:
           - name: web
-            image:  "ktis-bastion01.container.ipc.kt.com:5000/millet/batch-sample:1.0.0"
+            image:  "neocode24/batch-sample:1.0.0"
             imagePullPolicy: Always
             env:
               - name: POSTGRES_ENV_DB
