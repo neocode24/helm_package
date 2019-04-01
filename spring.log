@@ -1,0 +1,186 @@
+[15:08:57.629][main                    ][.kt.millet.helm.KafkaProducerSampleApplication][  50][I] Starting KafkaProducerSampleApplication on NeoCode24-MacBook-Pro.local with PID 40688 (/Users/neocode24/Documents/Git/helm_package/kafka-producer-sample/target/classes started by neocode24 in /Users/neocode24/Documents/Git/helm_package)
+[15:08:57.632][main                    ][.kt.millet.helm.KafkaProducerSampleApplication][ 679][I] The following profiles are active: dev
+[15:08:58.578][main                    ][rRegistrationDelegate$BeanPostProcessorChecker][ 330][I] Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$9462ccef] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[15:08:58.813][main                    ][ework.boot.web.embedded.tomcat.TomcatWebServer][  90][I] Tomcat initialized with port(s): 8080 (http)
+[15:08:58.823][main                    ][org.apache.coyote.http11.Http11NioProtocol    ][ 173][I] Initializing ProtocolHandler ["http-nio-8080"]
+[15:08:58.830][main                    ][org.apache.catalina.core.StandardService      ][ 173][I] Starting service [Tomcat]
+[15:08:58.830][main                    ][org.apache.catalina.core.StandardEngine       ][ 173][I] Starting Servlet engine: [Apache Tomcat/9.0.16]
+[15:08:58.835][main                    ][org.apache.catalina.core.AprLifecycleListener ][ 173][I] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/neocode24/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+[15:08:58.895][main                    ][na.core.ContainerBase.[Tomcat].[localhost].[/]][ 173][I] Initializing Spring embedded WebApplicationContext
+[15:08:58.895][main                    ][org.springframework.web.context.ContextLoader ][ 296][I] Root WebApplicationContext: initialization completed in 1233 ms
+[15:08:59.429][main                    ][oot.actuate.endpoint.web.EndpointLinksResolver][  59][I] Exposing 1 endpoint(s) beneath base path '/actuator'
+[15:08:59.477][main                    ][eb.PropertySourcedRequestMappingHandlerMapping][  69][I] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+[15:08:59.583][main                    ][k.scheduling.concurrent.ThreadPoolTaskExecutor][ 171][I] Initializing ExecutorService 'applicationTaskExecutor'
+[15:08:59.748][main                    ][g.web.plugins.DocumentationPluginsBootstrapper][ 160][I] Context refreshed
+[15:08:59.769][main                    ][g.web.plugins.DocumentationPluginsBootstrapper][ 163][I] Found 1 custom documentation plugin(s)
+[15:08:59.794][main                    ][spring.web.scanners.ApiListingReferenceScanner][  41][I] Scanning for api listing references
+[15:08:59.865][main                    ][org.apache.coyote.http11.Http11NioProtocol    ][ 173][I] Starting ProtocolHandler ["http-nio-8080"]
+[15:08:59.890][main                    ][ework.boot.web.embedded.tomcat.TomcatWebServer][ 204][I] Tomcat started on port(s): 8080 (http) with context path ''
+[15:08:59.893][main                    ][.kt.millet.helm.KafkaProducerSampleApplication][  59][I] Started KafkaProducerSampleApplication in 2.543 seconds (JVM running for 2.89)
+[15:09:00.170][RMI TCP Connection(2)-17][na.core.ContainerBase.[Tomcat].[localhost].[/]][ 173][I] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[15:09:00.170][RMI TCP Connection(2)-17][.springframework.web.servlet.DispatcherServlet][ 524][I] Initializing Servlet 'dispatcherServlet'
+[15:09:00.176][RMI TCP Connection(2)-17][.springframework.web.servlet.DispatcherServlet][ 546][I] Completed initialization in 6 ms
+[15:09:16.204][Thread-9                ][k.scheduling.concurrent.ThreadPoolTaskExecutor][ 208][I] Shutting down ExecutorService 'applicationTaskExecutor'
+[15:13:18.066][main                    ][.kt.millet.helm.KafkaProducerSampleApplication][  50][I] Starting KafkaProducerSampleApplication on NeoCode24-MacBook-Pro.local with PID 42881 (/Users/neocode24/Documents/Git/helm_package/kafka-producer-sample/target/classes started by neocode24 in /Users/neocode24/Documents/Git/helm_package)
+[15:13:18.068][main                    ][.kt.millet.helm.KafkaProducerSampleApplication][ 679][I] The following profiles are active: dev
+[15:13:18.834][main                    ][rRegistrationDelegate$BeanPostProcessorChecker][ 330][I] Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$ad9188da] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[15:13:19.013][main                    ][ework.boot.web.embedded.tomcat.TomcatWebServer][  90][I] Tomcat initialized with port(s): 8080 (http)
+[15:13:19.021][main                    ][org.apache.coyote.http11.Http11NioProtocol    ][ 173][I] Initializing ProtocolHandler ["http-nio-8080"]
+[15:13:19.027][main                    ][org.apache.catalina.core.StandardService      ][ 173][I] Starting service [Tomcat]
+[15:13:19.027][main                    ][org.apache.catalina.core.StandardEngine       ][ 173][I] Starting Servlet engine: [Apache Tomcat/9.0.16]
+[15:13:19.031][main                    ][org.apache.catalina.core.AprLifecycleListener ][ 173][I] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/neocode24/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+[15:13:19.089][main                    ][na.core.ContainerBase.[Tomcat].[localhost].[/]][ 173][I] Initializing Spring embedded WebApplicationContext
+[15:13:19.089][main                    ][org.springframework.web.context.ContextLoader ][ 296][I] Root WebApplicationContext: initialization completed in 997 ms
+[15:13:19.611][main                    ][oot.actuate.endpoint.web.EndpointLinksResolver][  59][I] Exposing 1 endpoint(s) beneath base path '/actuator'
+[15:13:19.655][main                    ][eb.PropertySourcedRequestMappingHandlerMapping][  69][I] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+[15:13:19.742][main                    ][k.scheduling.concurrent.ThreadPoolTaskExecutor][ 171][I] Initializing ExecutorService 'applicationTaskExecutor'
+[15:13:19.887][main                    ][g.web.plugins.DocumentationPluginsBootstrapper][ 160][I] Context refreshed
+[15:13:19.899][main                    ][g.web.plugins.DocumentationPluginsBootstrapper][ 163][I] Found 1 custom documentation plugin(s)
+[15:13:19.918][main                    ][spring.web.scanners.ApiListingReferenceScanner][  41][I] Scanning for api listing references
+[15:13:19.973][main                    ][org.apache.coyote.http11.Http11NioProtocol    ][ 173][I] Starting ProtocolHandler ["http-nio-8080"]
+[15:13:19.996][main                    ][ework.boot.web.embedded.tomcat.TomcatWebServer][ 204][I] Tomcat started on port(s): 8080 (http) with context path ''
+[15:13:19.999][main                    ][.kt.millet.helm.KafkaProducerSampleApplication][  59][I] Started KafkaProducerSampleApplication in 2.264 seconds (JVM running for 2.801)
+[15:13:20.352][RMI TCP Connection(2)-17][na.core.ContainerBase.[Tomcat].[localhost].[/]][ 173][I] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[15:13:20.352][RMI TCP Connection(2)-17][.springframework.web.servlet.DispatcherServlet][ 524][I] Initializing Servlet 'dispatcherServlet'
+[15:13:20.357][RMI TCP Connection(2)-17][.springframework.web.servlet.DispatcherServlet][ 546][I] Completed initialization in 4 ms
+[15:13:34.901][http-nio-8080-exec-3    ][et.mvc.support.DefaultHandlerExceptionResolver][ 197][W] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+[15:14:01.545][http-nio-8080-exec-5    ][g.apache.kafka.clients.producer.ProducerConfig][ 279][I] ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	bootstrap.servers = [complex01-kafka:9092]
+	buffer.memory = 33554432
+	client.id = 
+	compression.type = none
+	connections.max.idle.ms = 540000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 0
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+
+[15:14:01.626][http-nio-8080-exec-5    ][org.apache.kafka.clients.ClientUtils          ][  56][W] Removing server complex01-kafka:9092 from bootstrap.servers as DNS resolution failed for complex01-kafka
+[15:14:01.628][http-nio-8080-exec-5    ][rg.apache.kafka.clients.producer.KafkaProducer][1090][I] [Producer clientId=producer-1] Closing the Kafka producer with timeoutMillis = 0 ms.
+[15:14:01.638][http-nio-8080-exec-5    ][e.[Tomcat].[localhost].[/].[dispatcherServlet]][ 175][E] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.apache.kafka.common.KafkaException: Failed to construct kafka producer] with root cause
+org.apache.kafka.common.config.ConfigException: No resolvable bootstrap urls given in bootstrap.servers
+	at org.apache.kafka.clients.ClientUtils.parseAndValidateAddresses(ClientUtils.java:66)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:406)
+	at org.apache.kafka.clients.producer.KafkaProducer.<init>(KafkaProducer.java:289)
+	at org.springframework.kafka.core.DefaultKafkaProducerFactory.createKafkaProducer(DefaultKafkaProducerFactory.java:318)
+	at org.springframework.kafka.core.DefaultKafkaProducerFactory.createProducer(DefaultKafkaProducerFactory.java:305)
+	at org.springframework.kafka.core.KafkaTemplate.getTheProducer(KafkaTemplate.java:437)
+	at org.springframework.kafka.core.KafkaTemplate.doSend(KafkaTemplate.java:367)
+	at org.springframework.kafka.core.KafkaTemplate.send(KafkaTemplate.java:184)
+	at com.kt.millet.helm.producer.Sender.send(Sender.java:22)
+	at com.kt.millet.helm.controller.SenderController.createHistory(SenderController.java:29)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:117)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:106)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+[15:17:37.334][Thread-9                ][k.scheduling.concurrent.ThreadPoolTaskExecutor][ 208][I] Shutting down ExecutorService 'applicationTaskExecutor'

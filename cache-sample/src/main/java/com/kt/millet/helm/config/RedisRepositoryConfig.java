@@ -26,12 +26,12 @@ public class RedisRepositoryConfig {
     
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
-        LettuceClientConfiguration configuration = LettuceClientConfiguration.builder()
-                .readFrom(ReadFrom.SLAVE)
-                .build();
+//        LettuceClientConfiguration configuration = LettuceClientConfiguration.builder()
+//                .readFrom(ReadFrom.SLAVE)
+//                .build();
 
-        return new LettuceConnectionFactory(new RedisStandaloneConfiguration(redisHost, redisPort),
-                configuration);
+        return new LettuceConnectionFactory(new RedisStandaloneConfiguration(redisHost, redisPort));
+//                configuration);
     }
 
     @Bean

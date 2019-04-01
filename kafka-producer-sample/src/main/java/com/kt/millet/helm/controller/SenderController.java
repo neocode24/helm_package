@@ -28,4 +28,11 @@ public class SenderController {
 
 		sender.send(dataString);
 	}
+
+	@PostMapping("/test")
+	public void createTest() {
+		log.debug("start");
+
+		sender.send("test");
+	}
 }
