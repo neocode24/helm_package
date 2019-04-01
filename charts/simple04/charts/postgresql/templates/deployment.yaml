@@ -22,7 +22,7 @@ spec:
       volumes:
         - name: db-host-pv
           hostPath:
-            path: /data
+            path: /tmp/postgresql
             type: Directory
 
       containers:
