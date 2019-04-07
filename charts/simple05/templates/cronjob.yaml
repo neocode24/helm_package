@@ -3,9 +3,11 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: {{ template "simple05.fullname" $ }}-{{ .name }}
+  name: {{ $releaseName }}-{{ .name }}
   labels:
-    app: {{ template "simple05.name" $ }}-{{ .name }}-{{ .image.tag }}
+    appName: {{ $releaseName }}
+    svcName: {{ $releaseName }}-{{ .name }}
+    version: {{ .image.tag }}
     chart: {{ template "simple05.chart" $ }}
     release: {{ $releaseName }}
 spec:
@@ -15,14 +17,18 @@ spec:
   jobTemplate:
     metadata:
       labels:
-        app: {{ .name }}-{{ .image.tag }}
+        appName: {{ $releaseName }}
+        svcName: {{ $releaseName }}-{{ .name }}
+        version: {{ .image.tag }}
         chart: {{ template "simple05.chart" $ }}
         release: {{ $releaseName }}
     spec:
       template:
         metadata:
           labels:
-            app: {{ .name }}-{{ .image.tag }}
+            appName: {{ $releaseName }}
+            svcName: {{ $releaseName }}-{{ .name }}
+            version: {{ .image.tag }}
             chart: {{ template "simple05.chart" $ }}
             release: {{ $releaseName }}
         spec:
@@ -30,6 +36,7 @@ spec:
           - name: {{ .name }}
             image:  "{{ .image.repository }}:{{ .image.tag }}"
             imagePullPolicy: {{ .image.pullPolicy }}
+            args: {{ .args }}
 
             {{- range $k, $v := .env }}
               {{- if .enabled }}

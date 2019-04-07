@@ -20,7 +20,7 @@ management:
         
   
 ---
-
+requestDate: 20190402135000
 
 # Profile - local
 spring:
@@ -29,13 +29,19 @@ spring:
     url: jdbc:postgresql://${POSTGRES_ENV_IP}:${POSTGRES_ENV_PORT}/${POSTGRES_ENV_DB}
     username: ENC(G8oZZi/+nOGKJulpGhIbVbfTOlaJtJMJB+FFKFTbo3LrFwYiB81k9g==)
     password: ENC(GF/24zWh1wspRU+H455W+eYfxuM2RepOV7xgFJ0VqUWATjg+R8y0gg==)
+  batch:
+    initialize-schema: always
+    job:
+      names: ${job.name:NONE}
   jpa:
+    show-sql: true
     generate-ddl: true
-  properties:
-    hibernate:
-      jdbc:
-        lob:
-          non_contextual_creation: true
+    properties:
+      hibernate:
+        foramt_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
           
 POSTGRES_ENV_IP: 127.0.0.1
 POSTGRES_ENV_PORT: 5432
@@ -55,13 +61,19 @@ spring:
     url: jdbc:postgresql://${POSTGRES_ENV_IP}:${POSTGRES_ENV_PORT}/${POSTGRES_ENV_DB}
     username: ENC(G8oZZi/+nOGKJulpGhIbVbfTOlaJtJMJB+FFKFTbo3LrFwYiB81k9g==)
     password: ENC(GF/24zWh1wspRU+H455W+eYfxuM2RepOV7xgFJ0VqUWATjg+R8y0gg==)
+  batch:
+    initialize-schema: always
+    job:
+      names: ${job.name:NONE}
   jpa:
+    show-sql: true
     generate-ddl: true
-  properties:
-    hibernate:
-      jdbc:
-        lob:
-          non_contextual_creation: true
+    properties:
+      hibernate:
+        foramt_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
           
 POSTGRES_ENV_IP: 127.0.0.1
 POSTGRES_ENV_PORT: 5432
@@ -81,13 +93,19 @@ spring:
     url: jdbc:postgresql://${POSTGRES_ENV_IP}:${POSTGRES_ENV_PORT}/${POSTGRES_ENV_DB}
     username: ENC(G8oZZi/+nOGKJulpGhIbVbfTOlaJtJMJB+FFKFTbo3LrFwYiB81k9g==)
     password: ENC(GF/24zWh1wspRU+H455W+eYfxuM2RepOV7xgFJ0VqUWATjg+R8y0gg==)
+  batch:
+    initialize-schema: always
+    job:
+      names: ${job.name:NONE}
   jpa:
+    show-sql: true
     generate-ddl: true
-  properties:
-    hibernate:
-      jdbc:
-        lob:
-          non_contextual_creation: true
+    properties:
+      hibernate:
+        foramt_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
           
 POSTGRES_ENV_IP: 127.0.0.1
 POSTGRES_ENV_PORT: 5432
@@ -107,13 +125,19 @@ spring:
     url: jdbc:postgresql://${POSTGRES_ENV_IP}:${POSTGRES_ENV_PORT}/${POSTGRES_ENV_DB}
     username: ENC(G8oZZi/+nOGKJulpGhIbVbfTOlaJtJMJB+FFKFTbo3LrFwYiB81k9g==)
     password: ENC(GF/24zWh1wspRU+H455W+eYfxuM2RepOV7xgFJ0VqUWATjg+R8y0gg==)
+  batch:
+    initialize-schema: always
+    job:
+      names: ${job.name:NONE}
   jpa:
+    show-sql: true
     generate-ddl: true
-  properties:
-    hibernate:
-      jdbc:
-        lob:
-          non_contextual_creation: true
+    properties:
+      hibernate:
+        foramt_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
           
 POSTGRES_ENV_IP: 127.0.0.1
 POSTGRES_ENV_PORT: 5432

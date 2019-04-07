@@ -36,12 +36,14 @@ spring:
     username: ENC(G8oZZi/+nOGKJulpGhIbVbfTOlaJtJMJB+FFKFTbo3LrFwYiB81k9g==)
     password: ENC(GF/24zWh1wspRU+H455W+eYfxuM2RepOV7xgFJ0VqUWATjg+R8y0gg==)
   jpa:
+    show-sql: true
     generate-ddl: true
-  properties:
-    hibernate:
-      jdbc:
-        lob:
-          non_contextual_creation: true
+    properties:
+      hibernate:
+        foramt_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
           
 POSTGRES_ENV_IP: 127.0.0.1
 POSTGRES_ENV_PORT: 5432
@@ -62,12 +64,14 @@ spring:
     username: ENC(G8oZZi/+nOGKJulpGhIbVbfTOlaJtJMJB+FFKFTbo3LrFwYiB81k9g==)
     password: ENC(GF/24zWh1wspRU+H455W+eYfxuM2RepOV7xgFJ0VqUWATjg+R8y0gg==)
   jpa:
+    show-sql: true
     generate-ddl: true
-  properties:
-    hibernate:
-      jdbc:
-        lob:
-          non_contextual_creation: true
+    properties:
+      hibernate:
+        foramt_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
           
 POSTGRES_ENV_IP: 127.0.0.1
 POSTGRES_ENV_PORT: 5432
@@ -88,12 +92,14 @@ spring:
     username: ENC(G8oZZi/+nOGKJulpGhIbVbfTOlaJtJMJB+FFKFTbo3LrFwYiB81k9g==)
     password: ENC(GF/24zWh1wspRU+H455W+eYfxuM2RepOV7xgFJ0VqUWATjg+R8y0gg==)
   jpa:
+    show-sql: true
     generate-ddl: true
-  properties:
-    hibernate:
-      jdbc:
-        lob:
-          non_contextual_creation: true
+    properties:
+      hibernate:
+        foramt_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
           
 POSTGRES_ENV_IP: 127.0.0.1
 POSTGRES_ENV_PORT: 5432
@@ -114,12 +120,14 @@ spring:
     username: ENC(G8oZZi/+nOGKJulpGhIbVbfTOlaJtJMJB+FFKFTbo3LrFwYiB81k9g==)
     password: ENC(GF/24zWh1wspRU+H455W+eYfxuM2RepOV7xgFJ0VqUWATjg+R8y0gg==)
   jpa:
+    show-sql: true
     generate-ddl: true
-  properties:
-    hibernate:
-      jdbc:
-        lob:
-          non_contextual_creation: true
+    properties:
+      hibernate:
+        foramt_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
           
 POSTGRES_ENV_IP: 127.0.0.1
 POSTGRES_ENV_PORT: 5432

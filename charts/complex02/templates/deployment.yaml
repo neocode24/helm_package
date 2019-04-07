@@ -3,22 +3,28 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ template "complex02.fullname" $ }}-{{ .name }}
+  name: {{ $releaseName }}-{{ .name }}
   labels:
-    app: {{ template "complex02.name" $ }}-{{ .name }}-{{ .image.tag }}
+    appName: {{ $releaseName }}
+    svcName: {{ $releaseName }}-{{ .name }}
+    version: {{ .image.tag }}
     chart: {{ template "complex02.chart" $ }}
     release: {{ $releaseName }}
 spec:
   replicas: {{ .replicaCount }}
   selector:
     matchLabels:
-      app: {{ .name }}-{{ .image.tag }}
+      appName: {{ $releaseName }}
+      svcName: {{ $releaseName }}-{{ .name }}
+      version: {{ .image.tag }}
       chart: {{ template "complex02.chart" $ }}
       release: {{ $releaseName }}
   template:
     metadata:
       labels:
-        app: {{ .name }}-{{ .image.tag }}
+        appName: {{ $releaseName }}
+        svcName: {{ $releaseName }}-{{ .name }}
+        version: {{ .image.tag }}
         chart: {{ template "complex02.chart" $ }}
         release: {{ $releaseName }}
     spec:

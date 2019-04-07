@@ -3,22 +3,28 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ template "simple04.fullname" $ }}-{{ .name }}
+  name: {{ $releaseName }}-{{ .name }}
   labels:
-    app: {{ template "simple04.name" $ }}-{{ .name }}-{{ .image.tag }}
+    appName: {{ $releaseName }}
+    svcName: {{ $releaseName }}-{{ .name }}
+    version: {{ .image.tag }}
     chart: {{ template "simple04.chart" $ }}
     release: {{ $releaseName }}
 spec:
   replicas: {{ .replicaCount }}
   selector:
     matchLabels:
-      app: {{ .name }}-{{ .image.tag }}
+      appName: {{ $releaseName }}
+      svcName: {{ $releaseName }}-{{ .name }}
+      version: {{ .image.tag }}
       chart: {{ template "simple04.chart" $ }}
       release: {{ $releaseName }}
   template:
     metadata:
       labels:
-        app: {{ .name }}-{{ .image.tag }}
+        appName: {{ $releaseName }}
+        svcName: {{ $releaseName }}-{{ .name }}
+        version: {{ .image.tag }}
         chart: {{ template "simple04.chart" $ }}
         release: {{ $releaseName }}
     spec:

@@ -19,30 +19,23 @@
 ## label에는 기본 pod 단위의 버전을 포함한 정보와 package(chart) 정보, release 정보를 기록하여
 ## release 별 버전업 관리형식이 가능토록 생성 함.
 ##
-## deployment 항목 (releaseName == packageName, name이 "simple04-web" 일 경우)
-##   labels:
-##     app: simple04-web-1.0.0                    --> {packageName}-{podName}-{imageTag}
-##     chart: simple04-0.1.0                      --> {packageName}-{packageVersion}
-##     release: simple04                          --> {releaseName}
 ##
-## deployment 항목 (releaseName != packageName, name이 "abc-simple04-was" 일 경우)
+## deployment 항목 (releaseName이 "simple"이고, image name이 "was" 일 경우)
 ##   labels:
-##     app: simple04-web-1.0.0                    --> {packageName}-{podName}-{imageTag}
-##     chart: simple04-0.1.0                      --> {packageName}-{packageVersion}
-##     release: abc                               --> {releaseName}
+##     appName: simple                            --> {releaseName}
+##     svcName: simple-web                        --> {deploymentName}
+##     version: 1.0.0                             --> {imageTag}
+##     chart: simple01-1.0.0                      --> {chartName}-{chartVersion}
+##     release: simple                            --> {releaseName}
 ##
 ##
-## service 항목 (releaseName == packageName, name이 "simple04-web" 일 경우)
+## service 항목 (releaseName이 "simple"이고, image name이 "was" 일 경우)
 ##   labels:
-##     app: simple04-web-1.0.0                    --> {packageName}-{serviceName}-{serviceTag}
-##     chart: simple04-0.1.0                      --> {packageName}-{packageVersion}
-##     release: simple04                          --> {releaseName}
-##
-## service 항목 (releaseName != packageName, name이 "abc-simple04-web" 일 경우)
-##   labels:
-##     app: simple04-web-1.0.0                    --> {packageName}-{serviceName}-{serviceTag}
-##     chart: simple04-0.1.0                      --> {packageName}-{packageVersion}
-##     release: abc                               --> {releaseName}
+##     appName: simple                            --> {releaseName}
+##     svcName: simple-web                        --> {serviceName}
+##     version: 1.0.0                             --> {serviceTag}
+##     chart: simple01-0.1.0                      --> {chartName}-{chartVersion}
+##     release: simple                            --> {releaseName}
 ##
 ##=========================================================================================###
 
