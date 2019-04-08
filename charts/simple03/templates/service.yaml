@@ -5,8 +5,7 @@ kind: Service
 metadata:
   name: {{ $releaseName }}-{{ .name }}
   labels:
-    appName: {{ $releaseName }}
-    svcName: {{ $releaseName }}-{{ .name }}
+    app: {{ $releaseName }}
     version: {{ .tag }}
     chart: {{ template "simple03.chart" $ }}
     release: {{ $releaseName }}
@@ -18,8 +17,7 @@ spec:
       protocol: TCP
       name: http
   selector:
-    appName: {{ $releaseName }}
-    svcName: {{ $releaseName }}-{{ .name }}
+    app: {{ $releaseName }}
     version: {{ .tag }}
     chart: {{ template "simple03.chart" $ }}
     release: {{ $releaseName }}

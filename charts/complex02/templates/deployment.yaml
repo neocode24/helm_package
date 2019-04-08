@@ -5,8 +5,7 @@ kind: Deployment
 metadata:
   name: {{ $releaseName }}-{{ .name }}
   labels:
-    appName: {{ $releaseName }}
-    svcName: {{ $releaseName }}-{{ .name }}
+    app: {{ $releaseName }}
     version: {{ .image.tag }}
     chart: {{ template "complex02.chart" $ }}
     release: {{ $releaseName }}
@@ -14,16 +13,14 @@ spec:
   replicas: {{ .replicaCount }}
   selector:
     matchLabels:
-      appName: {{ $releaseName }}
-      svcName: {{ $releaseName }}-{{ .name }}
+      app: {{ $releaseName }}
       version: {{ .image.tag }}
       chart: {{ template "complex02.chart" $ }}
       release: {{ $releaseName }}
   template:
     metadata:
       labels:
-        appName: {{ $releaseName }}
-        svcName: {{ $releaseName }}-{{ .name }}
+        app: {{ $releaseName }}
         version: {{ .image.tag }}
         chart: {{ template "complex02.chart" $ }}
         release: {{ $releaseName }}
