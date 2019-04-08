@@ -5,7 +5,7 @@ kind: Deployment
 metadata:
   name: {{ $releaseName }}-{{ .name }}
   labels:
-    app: {{ $releaseName }}
+    app: {{ $releaseName }}-{{ .name }}
     version: {{ .image.tag }}
     chart: {{ template "simple03.chart" $ }}
     release: {{ $releaseName }}
@@ -13,14 +13,14 @@ spec:
   replicas: {{ .replicaCount }}
   selector:
     matchLabels:
-      app: {{ $releaseName }}
+      app: {{ $releaseName }}-{{ .name }}
       version: {{ .image.tag }}
       chart: {{ template "simple03.chart" $ }}
       release: {{ $releaseName }}
   template:
     metadata:
       labels:
-        app: {{ $releaseName }}
+        app: {{ $releaseName }}-{{ .name }}
         version: {{ .image.tag }}
         chart: {{ template "simple03.chart" $ }}
         release: {{ $releaseName }}
