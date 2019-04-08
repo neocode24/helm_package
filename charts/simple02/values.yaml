@@ -104,7 +104,7 @@ services:
 ## ----------                 -----------------------------------                ---------- ##
 deployments:
   - image:
-      repository: ktis-bastion01.container.ipc.kt.com:5000/millet/web-sample
+      repository: neocode24/web-sample
       tag: 1.0.0
       pullPolicy: Always
     name: web
