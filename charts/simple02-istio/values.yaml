@@ -322,4 +322,9 @@ istio:
     v2:
       version: 1.1.0
       weight: 50
+    legacy:
+      hosts:
+        - simple02-redis-master
+        - simple02-redis-slave
+        - simple02-postgresql
 ##=========================================================================================###
