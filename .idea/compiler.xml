@@ -6,15 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="kafka-consumer-sample" />
         <module name="batch-sample" />
         <module name="cache-sample" />
-        <module name="db-sample" />
-        <module name="kafka-consumer-sample" />
         <module name="kafka-producer-sample" />
+        <module name="db-sample" />
         <module name="was-sample" />
         <module name="web-sample" />
+        <module name="socket-test" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="socket-test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -23,6 +27,7 @@
       <module name="db-sample" options="-parameters" />
       <module name="kafka-consumer-sample" options="-parameters" />
       <module name="kafka-producer-sample" options="-parameters" />
+      <module name="socket-test" options="-parameters" />
       <module name="was-sample" options="-parameters" />
       <module name="web-sample" options="-parameters" />
     </option>

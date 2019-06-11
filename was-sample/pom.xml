@@ -90,7 +90,6 @@
 			                <include>${project.build.finalName}.jar</include>
 			            </resource>
 			        </resources>
-			        <googleContainerRegistryEnabled>false</googleContainerRegistryEnabled>
 			    </configuration>
 			</plugin>
 		</plugins>

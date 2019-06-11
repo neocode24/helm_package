@@ -1,13 +1,13 @@
 {{- $releaseName := .Release.Name -}}
 {{- range .Values.deployments }}
-apiVersion: apps/v1
+apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
   name: {{ $releaseName }}-{{ .name }}
   labels:
     app: {{ $releaseName }}-{{ .name }}
     version: {{ .image.tag }}
-    chart: {{ template "simple01.chart" $ }}
+    chart: {{ template "complex02.chart" $ }}
     release: {{ $releaseName }}
 spec:
   replicas: {{ .replicaCount }}
@@ -15,25 +15,20 @@ spec:
     matchLabels:
       app: {{ $releaseName }}-{{ .name }}
       version: {{ .image.tag }}
-      chart: {{ template "simple01.chart" $ }}
+      chart: {{ template "complex02.chart" $ }}
       release: {{ $releaseName }}
   template:
     metadata:
       labels:
         app: {{ $releaseName }}-{{ .name }}
         version: {{ .image.tag }}
-        chart: {{ template "simple01.chart" $ }}
+        chart: {{ template "complex02.chart" $ }}
         release: {{ $releaseName }}
-      annotations:
-        configHash: a155ddfb33e86ea6968d0fe75fdcdb013aaa76b57680da7ec6f45b2097d02520
     spec:
       containers:
         - name: {{ .name }}
           image: "{{ .image.repository }}:{{ .image.tag }}"
           imagePullPolicy: {{ .image.pullPolicy }}
-          envFrom:
-            - configMapRef:
-                name: demo-config
 
           {{- range $k, $v := .env }}
             {{- if .enabled }}
@@ -46,7 +41,6 @@ spec:
               {{- end }}
             {{- end }}
           {{- end }}
-
 
           ports:
 {{ toYaml .ports | indent 12 }}

@@ -29,4 +29,11 @@ public class SessionController {
 		}
 		return false;
 	}
+
+	@GetMapping("/get")
+	public String get(HttpServletRequest request) {
+		log.debug("get session");
+
+		return request.getSession(false) != null ? request.getSession(false).getId() : "empty";
+	}
 }

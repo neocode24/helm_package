@@ -1,15 +1,15 @@
-# Default values for simple01
+# Default values for complex02
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 ##=(Summary)================================================================================###
 ##
-## Helm Chart - [Simple01 Package : web-was]
+## Helm Chart - [complex02 Package : web-was-db-cache-kafka(producer)-kafka(consumer)]
 ##   - version: 1.0.0
-##   - createDate: 2019.03.27
-##   - modifiedDate: 2019.03.27
+##   - createDate: 2019.03.28
+##   - modifiedDate: 2019.03.28
 ##   - description:
-##     - (2019.03.27 1.0.0) : 최초 작성
+##     - (2019.03.28 1.0.0) : 최초 작성
 ##
 ##=========================================================================================###
 
@@ -51,11 +51,11 @@
 ## ----------                 -----------------------------------                ---------- ##
 ## ----------                 -----------------------------------                ---------- ##
 services:
-  - name: web
+  - name: producer
     tag: 1.0.0
     type: ClusterIP
-    port: 80 
-  - name: was
+    port: 80
+  - name: consumer
     tag: 1.0.0
     type: ClusterIP
     port: 80
@@ -81,7 +81,19 @@ services:
 ##                형태에 지정한 k8s service 명칭으로 호출됨.
 ##                k8s service 명칭은 services values 작성에 따라 {releaseName}-{packageName}-{작성명칭}으로 생성됨.
 ##                따라서, releaseName을 "abc"로 명칭한 경우 target.was.service.name 은
-##                target.was.service.name: "abc-simple01-was" 로 기술해야 함.
+##                target.was.service.name: "abc-complex02-was" 로 기술해야 함.
+##
+##      DB 정보)
+##      POSTGRES_ENV_IP: complex02-postgresql    --> VM DB일 경우 : release 명칭이 동일한 경우 {packageName}-{subChartName(postgresql)}
+##                                                                 relase 명칭이 있는 경우    {releaseName}-{subChartName(postgresql)}
+##                                                     External DB일 경우 : DB External IP or DB Expose ServiceName
+##      POSTGRES_ENV_PORT: 5432                    --> DB Port
+##      POSTGRES_ENV_DB: helm_sample               --> DB InstanceName
+##
+##      Redis 정보)
+##      spring.redis.host: complex02-redis-master   --> release 명칭이 동일한 경우 {packageName}-{subChartName(redis)}-master
+##                                                     release 명칭이 있는 경우   {releaseName}-{subChartName(redis)}-master
+##      spring.redis.port: 6379                    --> Redis Port
 ##
 ## livenessProbe: Pod의 정상동작 상태를 확인하기 위함. springboot 일 경우 actuator/health 정보로 기술.
 ## readinessProbe: Pod의 준비 상태를 확인하기 위함. springboot 일 경우 actuator/health 정보로 기술.
@@ -93,10 +105,10 @@ services:
 ## ----------                 -----------------------------------                ---------- ##
 deployments:
   - image:
-      repository: neocode24/web-sample
+      repository: neocode24/kafka-producer-sample
       tag: 1.0.0
       pullPolicy: Always
-    name: web
+    name: producer
     ports:
       - name: http
         containerPort: 8080
@@ -106,30 +118,30 @@ deployments:
       dev:
         enabled: true
         spring.profiles.active: dev
-        target.was.service.name: "simple01-was"
+        spring.kafka.bootstrap-servers: complex02-kafka:9092
+        spring.kafa.session.timeout: 60000
+        spring.kafka.topic: millet
       stage:
         enabled: false
         spring.profiles.active: stage
-        target.was.service.name: "simple01-was"
+        spring.kafka.bootstrap-servers: complex02-kafka:9092
+        spring.kafa.session.timeout: 60000
+        spring.kafka.topic: millet
       production:
         enabled: false
         spring.profiles.active: prd
-        target.was.service.name: "simple01-was"
+        spring.kafka.bootstrap-servers: complex02-kafka:9092
+        spring.kafa.session.timeout: 60000
+        spring.kafka.topic: millet
     resources: {}
-#      limits:
-#        cpu: 100m
-#        memory: 128Mi
-#      requests:
-#        cpu: 100m
-#        memory: 128Mi
     nodeSelector: {}
     tolerations: []
     affinity: {}
   - image:
-      repository: neocode24/was-sample
+      repository: neocode24/kafka-consumer-sample
       tag: 1.0.0
       pullPolicy: Always
-    name: was
+    name: consumer
     ports:
       - name: http
         containerPort: 8080
@@ -139,21 +151,21 @@ deployments:
       dev:
         enabled: true
         spring.profiles.active: dev
-        target.db.service.name: ""
-        target.cache.service.name: ""
-        spring.redis.host: simple01-redis-master
+        spring.kafka.bootstrap-servers: complex02-kafka:9092
+        spring.kafa.session.timeout: 60000
+        spring.kafka.topic: millet
       stage:
         enabled: false
         spring.profiles.active: stage
-        target.db.service.name: ""
-        target.cache.service.name: ""
-        spring.redis.host: simple01-redis-master
+        spring.kafka.bootstrap-servers: complex02-kafka:9092
+        spring.kafa.session.timeout: 60000
+        spring.kafka.topic: millet
       production:
         enabled: false
         spring.profiles.active: prd
-        target.db.service.name: ""
-        target.cache.service.name: ""
-        spring.redis.host: simple01-redis-master
+        spring.kafka.bootstrap-servers: complex02-kafka:9092
+        spring.kafa.session.timeout: 60000
+        spring.kafka.topic: millet
     resources: {}
     nodeSelector: {}
     tolerations: []
@@ -176,14 +188,14 @@ deployments:
 ## ----------                 -----------------------------------                ---------- ##
 ## ----------                 -----------------------------------                ---------- ##
 ingress:
-  enabled: true
+  enabled: false
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   path: /
-  serviceName: simple01-web
+  serviceName: complex02-web
   hosts:
-    - simple01-package.container.ipc.kt.com
+    - complex02-package.container.ipc.kt.com
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
