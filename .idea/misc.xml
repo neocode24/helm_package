@@ -14,7 +14,6 @@
         <option value="$PROJECT_DIR$/cache-sample/pom.xml" />
         <option value="$PROJECT_DIR$/kafka-consumer-sample/pom.xml" />
         <option value="$PROJECT_DIR$/kafka-producer-sample/pom.xml" />
-        <option value="$PROJECT_DIR$/socket-test/pom.xml" />
       </list>
     </option>
   </component>
