@@ -29,26 +29,26 @@ public class RedisRepositoryConfig {
      * redis MASTER - SLAVE 동작 구성.
      * @return
      */
-    @Bean
-    public RedisConnectionFactory redisConnectionFactory() {
-        LettuceClientConfiguration configuration = LettuceClientConfiguration.builder()
-                .readFrom(ReadFrom.SLAVE)
-                .build();
-
-        return new LettuceConnectionFactory(new RedisStandaloneConfiguration(redisHost, redisPort), configuration);
-    }
+//    @Bean
+//    public RedisConnectionFactory redisConnectionFactory() {
+//        LettuceClientConfiguration configuration = LettuceClientConfiguration.builder()
+//                .readFrom(ReadFrom.SLAVE)
+//                .build();
+//
+//        return new LettuceConnectionFactory(new RedisStandaloneConfiguration(redisHost, redisPort), configuration);
+//    }
 
     /**
      * redis MASTER - SENTINEL 동작 구성.
      * @return
      */
-//    @Bean
-//    public RedisConnectionFactory redisConnectionFactory() {
-//        RedisSentinelConfiguration sentinelConfig = new RedisSentinelConfiguration()
-//                .master("mymaster")
-//                .sentinel(redisHost, redisPort);
-//        return new LettuceConnectionFactory(sentinelConfig);
-//    }
+    @Bean
+    public RedisConnectionFactory redisConnectionFactory() {
+        RedisSentinelConfiguration sentinelConfig = new RedisSentinelConfiguration()
+                .master("mymaster")
+                .sentinel(redisHost, redisPort);
+        return new LettuceConnectionFactory(sentinelConfig);
+    }
 
     @Bean
     public RedisTemplate<?, ?> redisTemplate() {
